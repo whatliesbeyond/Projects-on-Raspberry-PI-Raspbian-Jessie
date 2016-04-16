@@ -1,0 +1,22 @@
+Making Raspberry Pi's (RPi's) IP static on a Raspbian Jessie OS using OS X and then SSH through OS X machine to Pi. 
+Prerequisites:- 
+  A) Raspbian Jessie ported to the Pi
+  B) RPi conneceted to the internet through LAN cable 
+  C) Your machine connected to the same network
+
+The procedure differs a little than the previous methods where we could just add the IP of our choice to interfaces file in /etc/network. 
+On Raspbian Jessie, you need to add the changes to dhchcp.conf in /etc. 
+
+From the terminal:-
+  $ cd /etc
+  $ nano dhcpcd.conf 
+    This should open up the dhcpcd.conf file, where you edit it to add a few lines to the end as mentioned below-
+    
+    static interface eth0 
+		static ip_address=Pi's current IP
+		static routers=IP of your router  
+		static domain_name_servers=IP of your DNS server
+	
+	For my mac, Router IP and DNS server IP are both the same. 
+
+
